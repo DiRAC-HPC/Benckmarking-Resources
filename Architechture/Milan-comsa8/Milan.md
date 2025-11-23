@@ -1,6 +1,6 @@
 # AMD Epyc 7763 (Milan - Zen3) on Cosma8
 
-# Technical specifications
+## Technical specifications
 
 | Component                   | Per-Core          | Per-CCD (8 cores) | Per-NUMA (2 CCDs)          | Per-Socket (8 CCDs) | Node (2 Sockets) |
 |-----------------------------|-------------------|-------------------|----------------------------|---------------------|------------------|
@@ -28,9 +28,9 @@ Notes:
   fetching directly from DRAM (*).
 - AVX2 (256-bit) on Zen3 provides 1 FMA units/core
 
-# Peaks
+## Peak Performance
 
-## Double avx fma flops
+### Double avx fma flops
 
 Theoretical:
 
@@ -49,7 +49,7 @@ numactl --cpunodebind=0 --membind=0 likwid-perfctr -C 0-15 -g FLOPS_DP -m likwid
 | 64    | 4     | 2734.1                | 2686.7             | 98.27     | 2.67            |
 | 128   | 8     | 5529.6                | 5371.9             | 97.15     | 2.7             |
 
-## Single avx fma flops
+### Single avx fma flops
 
 Theoretical:
 
@@ -68,7 +68,7 @@ numactl --cpunodebind=0 --membind=0 likwid-perfctr -C 0-15 -g FLOPS_SP -m likwid
 | 64    | 4     | 5468.2                | 5361.4             | 98.05     | 2.67            |
 | 128   | 8     | 11059.2               | 10711.0            | 96.85     | 2.7             |
 
-## Memory bandwidth
+### Memory bandwidth
 
 Theoretical:
 
@@ -88,7 +88,7 @@ numactl --cpunodebind=0 --membind=0 likwid-perfctr -C 0-15 -g MEM2 -m likwid-ben
 | 64    | 4     | 204.8 GB/s  | 165.3 GB/s | 80.71     |
 | 128   | 8     | 409.6 GB/s  | 331.4 GB/s | 80.91     |
 
-## L2 bandwidth
+### L2 bandwidth
 
 Likwid command (scaled for number of cores):
 
