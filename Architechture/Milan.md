@@ -1,8 +1,4 @@
----
-title: Milan
----
-
-# Technical specifications
+# AMD Milan (Zen2) Technical specifications
 
 | Component                   | Per-Core          | Per-CCD (8 cores) | Per-NUMA (2 CCDs)          | Per-Socket (8 CCDs) | Node (2 Sockets) |
 |-----------------------------|-------------------|-------------------|----------------------------|---------------------|------------------|
@@ -29,7 +25,7 @@ Notes:
 - L3 cache acts as a victim cache for L2, storing evicted lines but not
   fetching directly from DRAM (\*).
 
-# Peaks
+# Peak Performance
 
 ## Double avx fma flops
 
