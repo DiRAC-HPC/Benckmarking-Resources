@@ -9,7 +9,7 @@
 | L1i Cache | 32 KB | 256 KB | 1024 KB or 1 MB | 2048 KB or 2 MB |
 | L2 Cache | 2 MB | 16 MB | 64 MB | 128 MB |
 | L3 Cache | 960 KB | 7.5 MB | 60 MB | 120 MB |
-| Memory Channels (DDR5-4400) | 0.5 channel | 2 channels | 8 channels | 16 channels |
+| Memory Channels (DDR5-4400) | 0.25 channel | 2 channels | 8 channels | 16 channels |
 | NUMA Domains (w/o SNC4) | — | — | 1 NUMA domain | 2 NUMA domains |
 | Topology Mapping | — | 1 compute tile | 4 tiles total | 8 tiles total |
 
