@@ -985,7 +985,7 @@ We will skip adding the full logs and any further discussion, and just provide a
 | SP/DRAM AI                 | 31.85 FLOP/B   |
 | Bottleneck                 | Compute-bound  |
 
-![Roofline plot for SWIFT EAGLE_25 on single Genoa socket @1.9GHz](roofline_hierarchical_Genoa_@1.9GHz_socket.png)
+![Roofline plot for SWIFT EAGLE_25 on single Genoa socket @1.9GHz](roofline_Genoa_@1.9GHz_socket.png)
 
 ##### Full Node (@1.9GHz)
 
@@ -1042,7 +1042,7 @@ We will skip adding the full logs and any further discussion, and just provide a
 | SP/DRAM AI                 |    48.70 FLOP/B |
 | Bottleneck                 |   Compute-bound |
 
-![Roofline plot for SWIFT EAGLE_25 on a dual-socket Genoa node @1.9GHz](roofline_hierarchical_Genoa_@1.9GHz_node.png)
+![Roofline plot for SWIFT EAGLE_25 on a dual-socket Genoa node @1.9GHz](roofline_Genoa_@1.9GHz_node.png)
 
 
 ### Interpreting the results
