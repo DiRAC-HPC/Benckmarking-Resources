@@ -870,7 +870,7 @@ We will record the following data:
 | Total L2 Data Volume   | 590360.8 TB    |
 | L1 Cache Hit Rate      | 97.5%          |
 
-We added:
+Beyond what we recoreded for the micro-benchmarks, we added:
 
 - The walltime, which we can get from any of the tests as the max value of the `Runtime (RDTSC) [s] STAT` metric;
 - The app total data volume (frorm DRAM) by summing the `Memory read data volume [GBytes] STAT` and `Memory write data volume [GBytes] STAT`
@@ -879,7 +879,7 @@ We added:
 Additionally, we have the `CACHE` group metrics, which we did not use for the micro-benchmarks as they are not useful to establish the peaks.
 From them we care mostly about the cache hit rate, which we can get from taking 1 - the max value of the `data cache miss rate STAT`.  
 
-Beyond the recorded values, it is also useful to compare the L1 cache miss volume to DRAM traffic to understand L2 cache reuse.
+It is also useful to compare the L1 cache miss volume to DRAM traffic to understand L2 cache reuse.
 If we take the sum in `data cache misses STAT` and multiply by 64 bytes per miss, we get 8.939 trillion × 64 bytes = 572 TB of data served from L2 to L1. This also aligns with the measured `L2 data volume [GBytes] STAT`.
 Comparing this to the DRAM data volume (77 TB), we see a reuse factor of ~7.4×, indicating that data brought into L2 from DRAM is reused multiple times before eviction.
 Combined with the very low cache miss rate, this is a very strong indication of excellent cache efficiency.
@@ -903,6 +903,10 @@ roofline.jl \
 --table-format=markdown \
 --plot-format=png
 ```
+
+Note that the process of reading in the data from `likwid-perfctr` output logs, recording the relevant parameters in a condensed manner and using them to call RooflinePlots.jl can all be scripted.
+This could be as simple as a shell script with `gerp`, using CSV output from likwid and using Python or Julia directly, or in a notebook environment with Julyter or Pluto.
+My personal workflow involves Emacs org-mode with babel to automate the whole process.
 
 **Performance Results:**
 
@@ -1040,7 +1044,6 @@ roofline.jl \
 | Bottleneck                 |   Compute-bound |
 
 ![Roofline plot for SWIFT EAGLE_25 on a dual-socket Genoa node @1.9GHz](roofline_Genoa_@1.9GHz_node.png)
-
 
 ### Interpreting the results
 
