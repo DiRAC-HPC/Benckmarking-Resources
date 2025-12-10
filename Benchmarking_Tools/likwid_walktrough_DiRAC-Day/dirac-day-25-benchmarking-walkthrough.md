@@ -1050,12 +1050,12 @@ roofline.jl \
 #### Understanding Arithmetic Intensity and the Ridgepoint
 
 Arithmetic Intensity (AI) is the ratio of computational work (FLOP/s) to data movement (Bytes/s), measured in FLOP/Byte.
-It characterizes how compute-intensive versus memory-intensive a code is.
+It characterizes how compute-intensive versus memory-intensive a code is.  
 
 The critical threshold for determining whether a code is compute-bound or memory-bound is the **ridgepoint**, which is hardware-specific and calculated as:
-**Ridgepoint AI = Peak FLOP/s / Peak Bandwidth**
+**Ridgepoint AI = Peak FLOP/s / Peak Bandwidth**  
 
-For the Genoa NUMA domain configuration, using **SP (single precision) peaks** since SWIFT is SP-dominant with only a small fraction of DP operations:
+For the Genoa NUMA domain configuration, using **SP (single precision) peaks** since SWIFT is SP-dominant with only a small fraction of DP operations:  
 
 **DRAM Ridgepoint:**
 
@@ -1080,9 +1080,7 @@ This means:
 
 The primary method to determine whether a code is compute-bound or memory-bound is comparing the Arithmetic Intensity to the ridgepoint.
 
-**For the NUMA domain case:**
-
-**Using the ridgepoint analysis:**
+**Using the ridgepoint analysis (single NUMA case):**
 
 - FLOP/DRAM AI = 32.42 FLOP/B
 - DRAM Ridgepoint = 15.76 FLOP/B
@@ -1138,7 +1136,7 @@ Comparing across topologies reveals important scaling characteristics:
 **Memory Bandwidth Utilization:**
 
 - Stays consistently low across all configurations (4-11% of peak)
-- Absolute bandwidth usage actually increases with more cores (9.68 → 32.06 → 30.92 GB/s)
+- Absolute bandwidth usage actually increases with more cores on a single socket (9.68 → 32.06 GB/s)
 - Percentage of peak decreases due to increasing peak bandwidth availability
 
 **Why does percentage of peak compute decrease with scaling?**
@@ -1147,7 +1145,7 @@ The decreasing percentage of peak FLOP/s (43.4% → 35.6% → 26.3%) as we scale
 
 1. **Inter-NUMA communication overhead**: Moving data between NUMA domains adds latency
 2. **Load balancing challenges**: Harder to perfectly balance work across more cores
-3. **Cache effects**: Reduced per-core cache availability when sharing L3 across more cores
+3. **Cache effects**: Reduced per-core cache availability when sharing L3 across more CCDs
 4. **Problem size limitations**: EAGLE_25 is too small for 192 cores, leading to poor scaling
 
 The NUMA domain result represents the best achievable performance per core, while larger topologies show the cost of scaling.  This further indicates potential for better performance from hybrid shared-distributed memory models (MPI per NUMA domain + pthreads for each 24c in the rank). This has yet to be tested on Genoa.
