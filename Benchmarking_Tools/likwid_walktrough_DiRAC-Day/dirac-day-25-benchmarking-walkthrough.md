@@ -889,20 +889,19 @@ Combined with the very low cache miss rate, this is a very strong indication of 
 Using the system configuration peak values and adding the recorded SWIFT measurements, we can produce the roofline plot and analysis summary.
 
 ```bash
-./roofline.jl \
-    --peak-bw-DRAM=91.80 \
-    --measured-bw-DRAM=9.68 \
-    --peak-bw-L2=674.0 \
-    --measured-bw-L2=74.40 \
-    --peak-flops-DP=722.3 \
-    --measured-flops-DP=313.80 \
-    --peak-flops-SP=1446.6 \
-    --measured-flops-SP=313.80 \
-    --cpu-name="Genoa @1.9GHz" \
-    --app-name="EAGLE_25 fixed timestep" \
-    --topology="NUMA" \
-    --table-format=markdown \
-    --plot-format=png
+roofline.jl \
+--peak-bw-DRAM=91.80 \
+--peak-bw-L2=674.0 \
+--peak-flops-DP=722.3 \
+--peak-flops-SP=1446.6 \
+--measured-bw-DRAM=9.68 \
+--measured-bw-L2=74.40 \
+--measured-flops=313.80 \
+--cpu-name="Genoa @1.9GHz" \
+--app-name="EAGLE_25 fixed timestep" \
+--topology="NUMA" \
+--table-format=markdown \
+--plot-format=png
 ```
 
 **Performance Results:**
@@ -957,18 +956,17 @@ We will skip adding the full logs and any further discussion, and just provide a
 **RooflinePlots.jl Command:**
 
 ```bash
-./roofline.jl \
-    --peak-bw-DRAM=364.90 \
-    --measured-bw-DRAM=32.06 \
-    --peak-flops-DP=2871.3 \
-    --measured-flops-DP=1021.13 \
-    --peak-flops-SP=5783.1 \
-    --measured-flops-SP=1021.13 \
-    --cpu-name="Genoa @1.9GHz" \
-    --app-name="EAGLE_25 fixed timestep" \
-    --topology="Socket" \
-    --table-format=markdown \
-    --plot-format=png
+roofline.jl \
+--peak-bw-DRAM=364.90 \
+--peak-flops-DP=2871.3 \
+--peak-flops-SP=5783.1 \
+--measured-bw-DRAM=32.06 \
+--measured-flops=1021.13 \
+--cpu-name="Genoa @1.9GHz" \
+--app-name="EAGLE_25 fixed timestep" \
+--topology="Socket" \
+--table-format=markdown \
+--plot-format=png
 ```
 
 **Performance Results:**
@@ -1014,18 +1012,17 @@ We will skip adding the full logs and any further discussion, and just provide a
 **RooflinePlots.jl Command:**
 
 ```bash
-  ./roofline.jl \
-      --peak-bw-DRAM=731.50 \
-      --measured-bw-DRAM=30.92 \
-      --peak-flops-DP=5732.4 \
-      --measured-flops-DP=1505.94 \
-      --peak-flops-SP=11543.2 \
-      --measured-flops-SP=1505.94 \
-      --cpu-name="Genoa @1.9GHz" \
-      --app-name="EAGLE_25 fixed timestep" \
-      --topology="Node" \
-      --table-format=markdown \
-      --plot-format=png
+roofline.jl \
+--peak-bw-DRAM=731.50 \
+--peak-flops-DP=5732.4 \
+--peak-flops-SP=11543.2 \
+--measured-bw-DRAM=30.92 \
+--measured-flops=1505.94 \
+--cpu-name="Genoa @1.9GHz" \
+--app-name="EAGLE_25 fixed timestep" \
+--topology="Node" \
+--table-format=markdown \
+--plot-format=png
 ```
 
 **Performance Results:**
