@@ -188,7 +188,7 @@ To do that, it helps to understand what the theoretical peaks on the architectur
 
 For AVX + FMA, the general theoretical formula is:
 
-- cores × frequency × (fma_units × fma_ops) × (vector_size / dp_size)
+- cores × frequency × (fma_units × fma_ops) × (vector_size / float_size)
 
 To get close to such numbers, we cannot afford to be slowed down by memory, so ideally we set the problem size to fit well within the L2 Cache (per-core) Cache limits (testing with smaller counters, the results were unpredictable and often worse - likely due to skipped counters).  
 
@@ -210,9 +210,9 @@ The likwid command (scaled for number of cores) are then:
 ``` bash
 numactl --cpunodebind=0 --membind=0 likwid-perfctr -C 0-23 -g FLOPS_DP -m likwid-bench -t peakflops_avx512_fma -W N:12MB:24 -i 1000
 
-numactl --cpunodebind=0-3 --membind=0-3 likwid-perfctr -C 0-95 -g FLOPS_DP -m likwid-bench -t peakflops_avx512_fma -W N:48:96 -i 1000
+numactl --cpunodebind=0-3 --membind=0-3 likwid-perfctr -C 0-95 -g FLOPS_DP -m likwid-bench -t peakflops_avx512_fma -W N:48MB:96 -i 1000
 
-numactl --cpunodebind=0-7 --membind=0-7 likwid-perfctr -C 0-191 -g FLOPS_DP -m likwid-bench -t peakflops_avx512_fma -W N:96:192 -i 1000
+numactl --cpunodebind=0-7 --membind=0-7 likwid-perfctr -C 0-191 -g FLOPS_DP -m likwid-bench -t peakflops_avx512_fma -W N:96MB:192 -i 1000
 ```
 
 **Results with boost frequency (PState-3):**
@@ -748,6 +748,7 @@ This outputs a markdown-formatted performance table with computed metrics includ
 The following benchmarks were performed using the SWIFT cosmological simulation code with the EAGLE_25 test case.
 This is a cosmological hydrodynamics simulation representing a small cosmological volume with ~25 Mpc box size.
 The benchmarks were run with different CPU topologies (single NUMA domain, single socket, and full node) to understand how the code scales and where performance bottlenecks emerge.
+**There results should be used for example purposes and are not a full reflection of the SWIFT code!**
 
 #### Benchmark Configuration
 
